@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamo - Roche Srbija | Official Site</title>
+    <style>
+        /* --- 0.1 UBACIVANJE ROCHE FONTA --- */
+        @font-face {
+            font-family: 'RocheBrandFont';
+            src: url('RocheSans-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'RocheBrandFont';
+            src: url('RocheSans-Bold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        /* --- 0. OSNOVNA PODEŠAVANJA & PALETA --- */
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #000000;
+            --text-secondary: #444444;
+            --roche-blue: #005ead;
+            
+            --color-peach: #f3cc96;
+            --color-sky: #bde2fa;
+            --color-lavender: #f1d3ff;
+            --color-rose: #f99ba2;
+
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'RocheBrandFont', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        h1, h2, h3, h4 { margin: 0; color: var(--text-main); }
+        p { line-height: 1.6; color: var(--text-secondary); margin-bottom: 20px; }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 5;
+        }
+
+        /* --- POZADINSKI EFEKTI --- */
+        
+        /* 1. SLOJ: ŠARENA MREŽA */
+        .bg-hex-network {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, var(--color-peach), var(--color-sky), var(--color-lavender), var(--color-rose));
+            -webkit-mask-image: url('image_6.png');
+            mask-image: url('image_6.png');
+            -webkit-mask-repeat: repeat;
+            mask-repeat: repeat;
+            -webkit-mask-size: 500px auto;
+            mask-size: 500px auto;
+            opacity: 0.8; 
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* 2. SLOJ: BELA MAGLA */
+        .white-center-mask {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #ffffff 40%, rgba(255,255,255,0) 90%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Orbovi */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -3;
+            opacity: 0.6;
+            animation: float 20s infinite ease-in-out alternate;
+        }
+
+        .orb-1 { width: 500px; height: 500px; background: var(--color-peach); top: -100px; left: -100px; }
+        .orb-2 { width: 600px; height: 600px; background: var(--color-sky); bottom: -100px; right: -100px; animation-delay: -5s; }
+        .orb-3 { width: 400px; height: 400px; background: var(--color-lavender); top: 20%; right: 10%; animation-delay: -10s; opacity: 0.4; }
+        .orb-4 { width: 450px; height: 450px; background: var(--color-rose); bottom: 10%; left: 10%; animation-delay: -15s; opacity: 0.4; }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, 40px) scale(1.1); }
+        }
+
+        .corner-hex {
+            position: fixed;
+            z-index: -1;
+            opacity: 0.03; 
+            pointer-events: none;
+            fill: var(--roche-blue);
+        }
+        .hex-top-left { top: -100px; left: -150px; width: 500px; height: 500px; transform: rotate(15deg); }
+        .hex-bottom-right { bottom: -100px; right: -100px; width: 600px; height: 600px; transform: rotate(-15deg); }
+
+        .section-separator {
+            height: 2px;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(90deg, transparent, var(--color-sky), var(--color-rose), transparent);
+            opacity: 0.6;
+        }
+
+        /* --- 1. HERO SEKCIJA --- */
+        .hero {
+            position: relative;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); 
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            animation: fadeUp 1s ease-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .hero-logo {
+            max-width: 750px; 
+            width: 95%; 
+            height: auto;
+            margin-bottom: 10px; 
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+        }
+
+        .hero p { 
+            font-size: 1.4rem; 
+            color: rgba(255, 255, 255, 0.95); 
+            margin-bottom: 25px; 
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 16px 40px;
+            background-color: var(--roche-blue);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(0, 94, 173, 0.3);
+        }
+        .btn-primary:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 15px 35px rgba(0, 94, 173, 0.5); 
+            background-color: #004c8c;
+        }
+
+        /* --- 2. KANALI --- */
+        .channels-section { padding: 60px 0; }
+        
+        .channels-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .channel-card {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(189, 226, 250, 0.3); 
+            border: 1px solid rgba(0,0,0,0.02);
+            transition: var(--transition);
+            min-width: 180px;
+            justify-content: center;
+        }
+        .channel-card svg { width: 28px; height: 28px; fill: #666; transition: var(--transition); }
+        
+        .channel-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 15px 40px rgba(189, 226, 250, 0.6); 
+        }
+        .channel-card:hover svg { fill: var(--roche-blue); }
+        .channel-card:hover span { color: var(--roche-blue); }
+
+        /* --- 2.5 INTRO TEXT --- */
+        .intro-text-section { padding: 60px 0; text-align: center; }
+        .intro-content { max-width: 800px; margin: 0 auto; }
+        .intro-text-main { font-size: 1.15rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 20px; }
+        .intro-text-questions {
+            font-size: 1.15rem;
+            color: var(--roche-blue);
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        /* --- 3. EPIZODE --- */
+        .episodes-section { padding: 80px 0 100px; }
+        
+        .section-header { margin-bottom: 40px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--text-main); margin-bottom: 10px; }
+
+        .featured-video-wrapper {
+            width: 100%;
+            background: #000;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            margin-bottom: 80px;
+        }
+        .featured-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        /* Slider */
+        .slider-wrapper { position: relative; display: flex; align-items: center; }
+        .slider {
+            display: flex; gap: 25px; overflow-x: auto; scroll-behavior: smooth;
+            padding: 20px 10px 40px 10px; scroll-snap-type: x mandatory; width: 100%;
+        }
+        .slider::-webkit-scrollbar { height: 0px; background: transparent; }
+
+        .slider-card {
+            min-width: 300px; background: white; border-radius: 16px; padding: 15px;
+            scroll-snap-align: start; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+            transition: var(--transition); text-decoration: none; color: inherit;
+        }
+        .slider-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 20px 40px rgba(189, 226, 250, 0.4);
+        }
+
+        .card-img-wrapper {
+            height: 180px; border-radius: 12px; overflow: hidden; margin-bottom: 15px; position: relative;
+        }
+        .card-img { width: 100%; height: 100%; object-fit: cover; }
+        .play-overlay {
+            position: absolute; top:0; left:0; width:100%; height:100%;
+            background: rgba(0, 94, 173, 0.3);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; transition: var(--transition);
+        }
+        .play-overlay span { color: white; font-size: 2rem; }
+        .slider-card:hover .play-overlay { opacity: 1; }
+
+        .nav-btn {
+            background: white; border: 1px solid #eee; width: 50px; height: 50px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.05); font-size: 1.5rem;
+            color: var(--roche-blue); transition: var(--transition); z-index: 10; flex-shrink: 0;
+        }
+        .nav-btn:hover { background: var(--roche-blue); color: white; box-shadow: 0 10px 20px rgba(0, 94, 173, 0.3); }
+        .prev-btn { margin-right: 15px; }
+        .next-btn { margin-left: 15px; }
+
+        /* --- 4. TEME --- */
+        .topics-section { padding: 100px 0; background: rgba(255,255,255,0.5); backdrop-filter: blur(10px); }
+        .topics-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; margin-top: 50px;
+        }
+        .topic-card {
+            padding: 40px 20px; text-align: center; border-radius: 20px;
+            background: white; transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.03);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+        }
+        .topic-card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08); 
+        }
+
+        .topic-icon { 
+            width: 80px; height: 80px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem; 
+            color: var(--text-main);
+        }
+
+        .topic-1 .topic-icon { background-color: var(--color-peach); }
+        .topic-2 .topic-icon { background-color: var(--color-sky); }
+        .topic-3 .topic-icon { background-color: var(--color-lavender); }
+        .topic-4 .topic-icon { background-color: var(--color-rose); }
+
+        /* --- 5. CTA & FOOTER --- */
+        .cta-section { padding: 120px 0; text-align: center; }
+        .cta-section h2 { font-size: 3rem; color: var(--text-main); margin-bottom: 30px; }
+        
+        footer { background: var(--roche-blue); color: white; padding: 60px 0; text-align: center; }
+        .footer-links a { color: rgba(255,255,255,0.7); margin: 0 15px; text-decoration: none; transition: 0.3s;}
+        .footer-links a:hover { color: white; }
+
+        @media (max-width: 768px) {
+            .hero-logo { max-width: 400px; margin-bottom: 15px; }
+            .hero p { font-size: 1.2rem; margin-bottom: 25px; }
+            .nav-btn { display: none; }
+            .intro-text-section { padding: 40px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-hex-network"></div>
+
+    <div class="white-center-mask"></div>
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+
+    <svg class="corner-hex hex-top-left" viewBox="0 0 100 100">
+        <polygon points="50 1, 95 25, 95 75, 50 99, 5 75, 5 25"/>
+    </svg>
+    <svg class="corner-hex hex-bottom-right" viewBox="0 0 100 100">
+        <polygon points="50 1, 95 25, 95 75, 50 99, 5 75, 5 25"/>
+    </svg>
+
+    <header class="hero">
+        <video class="hero-video" autoplay muted loop playsinline poster="https://placehold.co/1920x1080/005ead/FFF">
+            <source src="hero-video.mp4" type="video/mp4">
+            Vaš pretraživač ne podržava video tag.
+        </video>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <img src="logo.png" alt="Dynamo Logo" class="hero-logo">
+            
+            <p>Istražite granice medicine, tehnologije i inovacija.</p>
+            <a href="https://youtube.com" class="btn-primary">Gledaj na YouTube-u</a>
+        </div>
+    </header>
+
+    <div class="section-separator"></div>
+
+    <section class="channels-section container">
+        <div class="channels-wrapper">
+            <a href="#" class="channel-card">
+                <svg viewBox="0 0 24 24"><path d="M23.5 6.2c-.3-1-1.1-1.8-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5c-1 .3-1.8 1.1-2.1 2.1C0 8.1 0 12 0 12s0 3.9.5 5.8c.3 1 1.1 1.8 2.1 2.1 1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5c1-.3 1.8-1.1 2.1-2.1.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
+                <span>YouTube</span>
+            </a>
+            <a href="#" class="channel-card">
+                <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <span>LinkedIn</span>
+            </a>
+            <a href="#" class="channel-card">
+                <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                <span>Facebook</span>
+            </a>
+            <a href="#" class="channel-card">
+                <svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+                <span>X</span>
+            </a>
+        </div>
+    </section>
+
+    <section class="intro-text-section container">
+        <div class="intro-content">
+            <p class="intro-text-main">
+                Cilj Dynamo podkasta je da zaposlenima u medicinskoj industriji obezbedi platformu na kojoj će moći da se informišu o inovacijama, najnovijim trendovima i praksama iz digitalne i medicinske industrije. Na Dynamo digitalnoj platformi svoja iskustva, znanja i savete deliće stručnjaci iz raznih sfera biznisa sa posebnim fokusom na digitalne i tehnološke aspekte.
+            </p>
+            <p class="intro-text-questions">
+                Kako nove tehnologije menjaju medicinu i farmaciju? Kako se različiti biznisi snalaze u digitalnom ekosistemu? Koje trendove je vredno ispratiti? Šta možemo da naučimo od profesionalaca iz drugih industrija?
+            </p>
+        </div>
+    </section>
+
+    <div class="section-separator"></div>
+
+    <section class="episodes-section container">
+        <div class="section-header">
+            <h2>Najnovija Epizoda</h2>
+        </div>
+
+        <div class="featured-video-wrapper">
+            <iframe 
+                src="https://www.youtube-nocookie.com/embed/pEpY4NOWbYs" 
+                title="Dynamo Epizoda" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <h3 style="font-size: 1.8rem; margin-bottom: 30px; color: var(--text-main);">Prethodne epizode</h3>
+        
+        <div class="slider-wrapper">
+            <button class="nav-btn prev-btn" id="slideLeft">❮</button>
+            <div class="slider" id="slider">
+                <a href="#" class="slider-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://placehold.co/400x250/005ead/FFF?text=Onkologija" class="card-img">
+                        <div class="play-overlay"><span>▶</span></div>
+                    </div>
+                    <h4>Epizoda 23: Onkologija</h4>
+                    <p style="font-size: 0.9rem;">Imunoterapija i budućnost.</p>
+                </a>
+                <a href="#" class="slider-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://placehold.co/400x250/004c8c/FFF?text=Liderstvo" class="card-img">
+                        <div class="play-overlay"><span>▶</span></div>
+                    </div>
+                    <h4>Epizoda 22: Liderstvo</h4>
+                    <p style="font-size: 0.9rem;">Hibridni timovi.</p>
+                </a>
+                <a href="#" class="slider-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://placehold.co/400x250/005ead/FFF?text=Startup" class="card-img">
+                        <div class="play-overlay"><span>▶</span></div>
+                    </div>
+                    <h4>Epizoda 21: Startapi</h4>
+                    <p style="font-size: 0.9rem;">Inovacije u korporaciji.</p>
+                </a>
+                <a href="#" class="slider-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://placehold.co/400x250/004c8c/FFF?text=Digital" class="card-img">
+                        <div class="play-overlay"><span>▶</span></div>
+                    </div>
+                    <h4>Epizoda 20: Digital Health</h4>
+                    <p style="font-size: 0.9rem;">Aplikacije i zdravlje.</p>
+                </a>
+                 <a href="#" class="slider-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://placehold.co/400x250/005ead/FFF?text=Podaci" class="card-img">
+                        <div class="play-overlay"><span>▶</span></div>
+                    </div>
+                    <h4>Epizoda 19: Data Science</h4>
+                    <p style="font-size: 0.9rem;">Big data analitika.</p>
+                </a>
+            </div>
+            <button class="nav-btn next-btn" id="slideRight">❯</button>
+        </div>
+    </section>
+
+    <section class="topics-section">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; color: var(--text-main);">Teme</h2>
+            <div class="topics-grid">
+                
+                <div class="topic-card topic-1">
+                    <div class="topic-icon">⚛</div>
+                    <h3>Inovacije</h3>
+                </div>
+                
+                <div class="topic-card topic-2">
+                    <div class="topic-icon">♥</div>
+                    <h3>Pacijenti</h3>
+                </div>
+                
+                <div class="topic-card topic-3">
+                    <div class="topic-icon">💻</div>
+                    <h3>Tehnologija</h3>
+                </div>
+                
+                <div class="topic-card topic-4">
+                    <div class="topic-icon">👥</div>
+                    <h3>Ljudi</h3>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Budite deo promene</h2>
+            <a href="#" class="btn-primary">Pretplati se na Kanal</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">O nama</a>
+                <a href="#">Roche Srbija</a>
+                <a href="#">Kontakt</a>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.7;">&copy; 2024 Roche d.o.o.</p>
+        </div>
+    </footer>
+
+    <script>
+        const slider = document.getElementById('slider');
+        const leftBtn = document.getElementById('slideLeft');
+        const rightBtn = document.getElementById('slideRight');
+
+        rightBtn.onclick = () => {
+            slider.scrollBy({ left: 350, behavior: 'smooth' });
+        };
+
+        leftBtn.onclick = () => {
+            slider.scrollBy({ left: -350, behavior: 'smooth' });
+        };
+    </script>
+
+</body>
+</html>
