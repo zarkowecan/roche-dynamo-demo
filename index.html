@@ -26,13 +26,6 @@
             --text-main: #000000;
             --text-secondary: #333333;
             --roche-blue: #005ead;
-            
-            /* Pastelne boje za teme ostaju */
-            --color-peach: #f3cc96;
-            --color-sky: #bde2fa;
-            --color-lavender: #f1d3ff;
-            --color-rose: #f99ba2;
-
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
@@ -40,14 +33,15 @@
             margin: 0;
             padding: 0;
             font-family: 'RocheBrandFont', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color); /* Čista bela */
+            background-color: var(--bg-color);
             color: var(--text-main);
             overflow-x: hidden;
             position: relative;
         }
 
         h1, h2, h3, h4 { margin: 0; color: var(--text-main); }
-        p { line-height: 1.6; color: var(--text-secondary); margin-bottom: 20px; }
+        /* Smanjen donji prored za paragrafe */
+        p { line-height: 1.6; color: var(--text-secondary); margin-bottom: 15px; }
         
         .container {
             max-width: 1200px;
@@ -62,7 +56,7 @@
             width: 100%;
             max-width: 900px;
             margin: 0 auto;
-            background: #eee; /* Veoma suptilna siva linija umesto gradijenta */
+            background: #eee;
         }
 
         /* --- 1. HERO SEKCIJA --- */
@@ -75,7 +69,8 @@
             text-align: center;
             color: white;
             overflow: hidden;
-            margin-bottom: 60px;
+            /* Smanjen prored ispod hero sekcije */
+            margin-bottom: 40px;
         }
 
         .hero-video {
@@ -132,19 +127,20 @@
             background-color: #004c8c;
         }
 
-        /* --- 2. KANALI --- */
-        .channels-section { padding: 60px 0; }
+        /* --- 2. KANALI (AŽURIRANO ZA NOVE IKONICE) --- */
+        /* Smanjen padding sekcije */
+        .channels-section { padding: 40px 0; }
         
         .channels-wrapper {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 20px; /* Smanjen razmak između kartica */
             flex-wrap: wrap;
         }
 
         .channel-card {
             background: white;
-            padding: 20px 30px;
+            padding: 15px 25px; /* Malo kompaktniji padding */
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -153,40 +149,54 @@
             color: var(--text-main);
             font-weight: bold;
             font-size: 1.1rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Smanjena senka za čistiji izgled */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             border: 1px solid #f0f0f0;
             transition: var(--transition);
-            min-width: 180px;
+            min-width: 160px; /* Malo uže */
             justify-content: center;
         }
-        .channel-card svg { width: 28px; height: 28px; fill: #666; transition: var(--transition); }
+        
+        /* Stil za nove ikonice (slike) umesto SVG putanja */
+        .channel-card img { 
+            width: 28px; 
+            height: 28px; 
+            transition: var(--transition);
+            /* Opciono: ako su ikonice crne, ovo ih boji u sivo pa u plavo na hover */
+            filter: grayscale(100%) opacity(0.7); 
+        }
         
         .channel-card:hover { 
             transform: translateY(-5px); 
             box-shadow: 0 15px 30px rgba(0,0,0,0.1); 
             border-color: var(--roche-blue);
         }
-        .channel-card:hover svg { fill: var(--roche-blue); }
+        /* Na hover, vrati originalnu boju ikonice (ili je oboji u plavo ako je transparentna) */
+        .channel-card:hover img { 
+            filter: none; /* Vraća originalne boje */
+            /* Ako želiš da budu baš Roche plave, koristi filter generator za tu boju */
+        }
         .channel-card:hover span { color: var(--roche-blue); }
 
-        /* --- 2.5 INTRO TEXT (IZMENJENO) --- */
-        .intro-text-section { padding: 80px 0; text-align: center; }
+        /* --- 2.5 INTRO TEXT --- */
+        /* Smanjen padding */
+        .intro-text-section { padding: 50px 0; text-align: center; }
         .intro-content { max-width: 900px; margin: 0 auto; }
         
-        /* Objedinjen stil za tekst */
         .intro-text-paragraph { 
-            font-size: 1.3rem; /* Povećan font */
-            color: #222; /* Ujednačena boja */
+            font-size: 1.3rem;
+            color: #222;
             line-height: 1.6; 
-            margin-bottom: 30px;
-            font-weight: normal; /* Nije bold */
-            font-style: normal; /* Nije italic */
+            margin-bottom: 20px; /* Smanjen prored */
+            font-weight: normal;
+            font-style: normal;
         }
 
         /* --- 3. EPIZODE --- */
-        .episodes-section { padding: 60px 0 100px; }
+        /* Smanjeni padding-zi */
+        .episodes-section { padding: 50px 0 80px; }
         
-        .section-header { margin-bottom: 40px; }
+        /* Smanjen prored ispod naslova */
+        .section-header { margin-bottom: 30px; }
         .section-header h2 { font-size: 2.5rem; color: var(--text-main); margin-bottom: 10px; }
 
         .featured-video-wrapper {
@@ -198,9 +208,13 @@
             position: relative;
             padding-bottom: 56.25%; 
             height: 0;
-            margin-bottom: 80px;
+            /* Smanjen prored do slajdera */
+            margin-bottom: 50px;
         }
         .featured-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        /* Slider naslov prored */
+        h3.slider-title { font-size: 1.8rem; margin-bottom: 25px; color: var(--text-main); }
 
         /* Slider */
         .slider-wrapper { position: relative; display: flex; align-items: center; }
@@ -245,35 +259,48 @@
         .prev-btn { margin-right: 15px; }
         .next-btn { margin-left: 15px; }
 
-        /* --- 4. TEME --- */
-        .topics-section { padding: 80px 0 150px; /* Malo veći padding dole jer nema footera */ }
+        /* --- 4. TEME (AŽURIRANO ZA GIFOVE I TEKST) --- */
+        /* Smanjeni padding-zi */
+        .topics-section { padding: 60px 0 100px; }
+        /* Smanjen margin-top za grid */
         .topics-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; margin-top: 50px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; margin-top: 40px;
         }
         .topic-card {
-            padding: 40px 20px; text-align: center; border-radius: 20px;
+            padding: 30px 20px; /* Malo manji padding unutar kartice */
+            text-align: center; border-radius: 20px;
             background: white; transition: var(--transition);
             border: 1px solid #f0f0f0;
             box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            display: flex; flex-direction: column; align-items: center;
         }
         .topic-card:hover { 
             transform: translateY(-10px); 
             box-shadow: 0 20px 50px rgba(0,0,0,0.08); 
         }
 
-        .topic-icon { 
-            width: 80px; height: 80px;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2rem; 
-            color: var(--text-main);
+        /* Stil za GIF ikonicu */
+        .topic-icon-gif { 
+            width: 100px; /* Prilagodi veličinu po potrebi */
+            height: auto;
+            margin-bottom: 20px;
+            display: block;
         }
 
-        .topic-1 .topic-icon { background-color: var(--color-peach); }
-        .topic-2 .topic-icon { background-color: var(--color-sky); }
-        .topic-3 .topic-icon { background-color: var(--color-lavender); }
-        .topic-4 .topic-icon { background-color: var(--color-rose); }
+        /* Povećan naslov u kartici */
+        .topic-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--roche-blue);
+        }
+
+        /* Stil za opis teme */
+        .topic-card p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
 
         @media (max-width: 768px) {
             .hero-logo { max-width: 400px; margin-bottom: 15px; }
@@ -281,6 +308,8 @@
             .nav-btn { display: none; }
             .intro-text-section { padding: 40px 0; }
             .intro-text-paragraph { font-size: 1.1rem; }
+            .channels-wrapper { gap: 15px; }
+            .channel-card { min-width: 140px; font-size: 1rem; }
         }
     </style>
 </head>
@@ -305,20 +334,20 @@
 
     <section class="channels-section container">
         <div class="channels-wrapper">
-            <a href="#" class="channel-card">
-                <svg viewBox="0 0 24 24"><path d="M23.5 6.2c-.3-1-1.1-1.8-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5c-1 .3-1.8 1.1-2.1 2.1C0 8.1 0 12 0 12s0 3.9.5 5.8c.3 1 1.1 1.8 2.1 2.1 1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5c1-.3 1.8-1.1 2.1-2.1.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
+            <a href="https://youtube.com" target="_blank" class="channel-card">
+                <img src="Video.svg" alt="YouTube">
                 <span>YouTube</span>
             </a>
-            <a href="#" class="channel-card">
-                <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <a href="https://linkedin.com" target="_blank" class="channel-card">
+                <img src="Linkedin social media icon.svg" alt="LinkedIn">
                 <span>LinkedIn</span>
             </a>
-            <a href="#" class="channel-card">
-                <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            <a href="https://facebook.com" target="_blank" class="channel-card">
+                <img src="Facebook social media icon.svg" alt="Facebook">
                 <span>Facebook</span>
             </a>
-            <a href="#" class="channel-card">
-                <svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+            <a href="https://twitter.com" target="_blank" class="channel-card">
+                <img src="X social media icon.svg" alt="X">
                 <span>X</span>
             </a>
         </div>
@@ -352,7 +381,7 @@
             </iframe>
         </div>
 
-        <h3 style="font-size: 1.8rem; margin-bottom: 30px; color: var(--text-main);">Prethodne epizode</h3>
+        <h3 class="slider-title">Prethodne epizode</h3>
         
         <div class="slider-wrapper">
             <button class="nav-btn prev-btn" id="slideLeft">❮</button>
@@ -407,24 +436,28 @@
             <h2 style="text-align: center; font-size: 2.5rem; color: var(--text-main);">Teme</h2>
             <div class="topics-grid">
                 
-                <div class="topic-card topic-1">
-                    <div class="topic-icon">⚛</div>
+                <div class="topic-card">
+                    <img src="inovacije.gif" alt="Inovacije" class="topic-icon-gif">
                     <h3>Inovacije</h3>
+                    <p>Najnovija otkrića koja redefinišu granice moderne medicine i lečenja.</p>
                 </div>
                 
-                <div class="topic-card topic-2">
-                    <div class="topic-icon">♥</div>
+                <div class="topic-card">
+                    <img src="pacijenti.gif" alt="Pacijenti" class="topic-icon-gif">
                     <h3>Pacijenti</h3>
+                    <p>Fokus na iskustva, potrebe i bolje ishode lečenja za svakog pojedinca.</p>
                 </div>
                 
-                <div class="topic-card topic-3">
-                    <div class="topic-icon">💻</div>
+                <div class="topic-card">
+                    <img src="tehnologija.gif" alt="Tehnologija" class="topic-icon-gif">
                     <h3>Tehnologija</h3>
+                    <p>Digitalni alati, AI i podaci koji transformišu zdravstveni ekosistem.</p>
                 </div>
                 
-                <div class="topic-card topic-4">
-                    <div class="topic-icon">👥</div>
+                <div class="topic-card">
+                    <img src="ljudi.gif" alt="Ljudi" class="topic-icon-gif">
                     <h3>Ljudi</h3>
+                    <p>Priče stručnjaka, lidera i timova koji stoje iza pozitivnih promena.</p>
                 </div>
 
             </div>
