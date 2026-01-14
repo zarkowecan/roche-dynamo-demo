@@ -20,13 +20,14 @@
             font-style: normal;
         }
 
-        /* --- 0. OSNOVNA PODEŠAVANJA & PALETA --- */
+        /* --- 0. OSNOVNA PODEŠAVANJA --- */
         :root {
             --bg-color: #ffffff;
             --text-main: #000000;
-            --text-secondary: #444444;
+            --text-secondary: #333333;
             --roche-blue: #005ead;
             
+            /* Pastelne boje za teme ostaju */
             --color-peach: #f3cc96;
             --color-sky: #bde2fa;
             --color-lavender: #f1d3ff;
@@ -39,7 +40,7 @@
             margin: 0;
             padding: 0;
             font-family: 'RocheBrandFont', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
+            background-color: var(--bg-color); /* Čista bela */
             color: var(--text-main);
             overflow-x: hidden;
             position: relative;
@@ -56,70 +57,12 @@
             z-index: 5;
         }
 
-        /* --- POZADINSKI EFEKTI --- */
-        
-        /* 1. SLOJ: ŠARENA MREŽA */
-        .bg-hex-network {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, var(--color-peach), var(--color-sky), var(--color-lavender), var(--color-rose));
-            -webkit-mask-image: url('image_6.png');
-            mask-image: url('image_6.png');
-            -webkit-mask-repeat: repeat;
-            mask-repeat: repeat;
-            -webkit-mask-size: 500px auto;
-            mask-size: 500px auto;
-            opacity: 0.8; 
-            z-index: -2;
-            pointer-events: none;
-        }
-
-        /* 2. SLOJ: BELA MAGLA */
-        .white-center-mask {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, #ffffff 40%, rgba(255,255,255,0) 90%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* Orbovi */
-        .orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -3;
-            opacity: 0.6;
-            animation: float 20s infinite ease-in-out alternate;
-        }
-
-        .orb-1 { width: 500px; height: 500px; background: var(--color-peach); top: -100px; left: -100px; }
-        .orb-2 { width: 600px; height: 600px; background: var(--color-sky); bottom: -100px; right: -100px; animation-delay: -5s; }
-        .orb-3 { width: 400px; height: 400px; background: var(--color-lavender); top: 20%; right: 10%; animation-delay: -10s; opacity: 0.4; }
-        .orb-4 { width: 450px; height: 450px; background: var(--color-rose); bottom: 10%; left: 10%; animation-delay: -15s; opacity: 0.4; }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(30px, 40px) scale(1.1); }
-        }
-
-        .corner-hex {
-            position: fixed;
-            z-index: -1;
-            opacity: 0.03; 
-            pointer-events: none;
-            fill: var(--roche-blue);
-        }
-        .hex-top-left { top: -100px; left: -150px; width: 500px; height: 500px; transform: rotate(15deg); }
-        .hex-bottom-right { bottom: -100px; right: -100px; width: 600px; height: 600px; transform: rotate(-15deg); }
-
         .section-separator {
-            height: 2px;
+            height: 1px;
             width: 100%;
             max-width: 900px;
             margin: 0 auto;
-            background: linear-gradient(90deg, transparent, var(--color-sky), var(--color-rose), transparent);
-            opacity: 0.6;
+            background: #eee; /* Veoma suptilna siva linija umesto gradijenta */
         }
 
         /* --- 1. HERO SEKCIJA --- */
@@ -210,8 +153,8 @@
             color: var(--text-main);
             font-weight: bold;
             font-size: 1.1rem;
-            box-shadow: 0 10px 30px rgba(189, 226, 250, 0.3); 
-            border: 1px solid rgba(0,0,0,0.02);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Smanjena senka za čistiji izgled */
+            border: 1px solid #f0f0f0;
             transition: var(--transition);
             min-width: 180px;
             justify-content: center;
@@ -220,24 +163,28 @@
         
         .channel-card:hover { 
             transform: translateY(-5px); 
-            box-shadow: 0 15px 40px rgba(189, 226, 250, 0.6); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1); 
+            border-color: var(--roche-blue);
         }
         .channel-card:hover svg { fill: var(--roche-blue); }
         .channel-card:hover span { color: var(--roche-blue); }
 
-        /* --- 2.5 INTRO TEXT --- */
-        .intro-text-section { padding: 60px 0; text-align: center; }
-        .intro-content { max-width: 800px; margin: 0 auto; }
-        .intro-text-main { font-size: 1.15rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 20px; }
-        .intro-text-questions {
-            font-size: 1.15rem;
-            color: var(--roche-blue);
-            font-weight: 500;
-            font-style: italic;
+        /* --- 2.5 INTRO TEXT (IZMENJENO) --- */
+        .intro-text-section { padding: 80px 0; text-align: center; }
+        .intro-content { max-width: 900px; margin: 0 auto; }
+        
+        /* Objedinjen stil za tekst */
+        .intro-text-paragraph { 
+            font-size: 1.3rem; /* Povećan font */
+            color: #222; /* Ujednačena boja */
+            line-height: 1.6; 
+            margin-bottom: 30px;
+            font-weight: normal; /* Nije bold */
+            font-style: normal; /* Nije italic */
         }
 
         /* --- 3. EPIZODE --- */
-        .episodes-section { padding: 80px 0 100px; }
+        .episodes-section { padding: 60px 0 100px; }
         
         .section-header { margin-bottom: 40px; }
         .section-header h2 { font-size: 2.5rem; color: var(--text-main); margin-bottom: 10px; }
@@ -249,7 +196,7 @@
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0,0,0,0.1);
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%; 
             height: 0;
             margin-bottom: 80px;
         }
@@ -266,12 +213,13 @@
         .slider-card {
             min-width: 300px; background: white; border-radius: 16px; padding: 15px;
             scroll-snap-align: start; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #f0f0f0;
             transition: var(--transition); text-decoration: none; color: inherit;
         }
         .slider-card:hover { 
             transform: translateY(-8px); 
-            box-shadow: 0 20px 40px rgba(189, 226, 250, 0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
         .card-img-wrapper {
@@ -298,15 +246,15 @@
         .next-btn { margin-left: 15px; }
 
         /* --- 4. TEME --- */
-        .topics-section { padding: 100px 0; background: rgba(255,255,255,0.5); backdrop-filter: blur(10px); }
+        .topics-section { padding: 80px 0 150px; /* Malo veći padding dole jer nema footera */ }
         .topics-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; margin-top: 50px;
         }
         .topic-card {
             padding: 40px 20px; text-align: center; border-radius: 20px;
             background: white; transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.03);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+            border: 1px solid #f0f0f0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
         }
         .topic-card:hover { 
             transform: translateY(-10px); 
@@ -327,39 +275,16 @@
         .topic-3 .topic-icon { background-color: var(--color-lavender); }
         .topic-4 .topic-icon { background-color: var(--color-rose); }
 
-        /* --- 5. CTA & FOOTER --- */
-        .cta-section { padding: 120px 0; text-align: center; }
-        .cta-section h2 { font-size: 3rem; color: var(--text-main); margin-bottom: 30px; }
-        
-        footer { background: var(--roche-blue); color: white; padding: 60px 0; text-align: center; }
-        .footer-links a { color: rgba(255,255,255,0.7); margin: 0 15px; text-decoration: none; transition: 0.3s;}
-        .footer-links a:hover { color: white; }
-
         @media (max-width: 768px) {
             .hero-logo { max-width: 400px; margin-bottom: 15px; }
             .hero p { font-size: 1.2rem; margin-bottom: 25px; }
             .nav-btn { display: none; }
             .intro-text-section { padding: 40px 0; }
+            .intro-text-paragraph { font-size: 1.1rem; }
         }
     </style>
 </head>
 <body>
-
-    <div class="bg-hex-network"></div>
-
-    <div class="white-center-mask"></div>
-
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-    <div class="orb orb-4"></div>
-
-    <svg class="corner-hex hex-top-left" viewBox="0 0 100 100">
-        <polygon points="50 1, 95 25, 95 75, 50 99, 5 75, 5 25"/>
-    </svg>
-    <svg class="corner-hex hex-bottom-right" viewBox="0 0 100 100">
-        <polygon points="50 1, 95 25, 95 75, 50 99, 5 75, 5 25"/>
-    </svg>
 
     <header class="hero">
         <video class="hero-video" autoplay muted loop playsinline poster="https://placehold.co/1920x1080/005ead/FFF">
@@ -401,10 +326,10 @@
 
     <section class="intro-text-section container">
         <div class="intro-content">
-            <p class="intro-text-main">
+            <p class="intro-text-paragraph">
                 Cilj Dynamo podkasta je da zaposlenima u medicinskoj industriji obezbedi platformu na kojoj će moći da se informišu o inovacijama, najnovijim trendovima i praksama iz digitalne i medicinske industrije. Na Dynamo digitalnoj platformi svoja iskustva, znanja i savete deliće stručnjaci iz raznih sfera biznisa sa posebnim fokusom na digitalne i tehnološke aspekte.
             </p>
-            <p class="intro-text-questions">
+            <p class="intro-text-paragraph">
                 Kako nove tehnologije menjaju medicinu i farmaciju? Kako se različiti biznisi snalaze u digitalnom ekosistemu? Koje trendove je vredno ispratiti? Šta možemo da naučimo od profesionalaca iz drugih industrija?
             </p>
         </div>
@@ -505,24 +430,6 @@
             </div>
         </div>
     </section>
-
-    <section class="cta-section">
-        <div class="container">
-            <h2>Budite deo promene</h2>
-            <a href="#" class="btn-primary">Pretplati se na Kanal</a>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-links">
-                <a href="#">O nama</a>
-                <a href="#">Roche Srbija</a>
-                <a href="#">Kontakt</a>
-            </div>
-            <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.7;">&copy; 2024 Roche d.o.o.</p>
-        </div>
-    </footer>
 
     <script>
         const slider = document.getElementById('slider');
