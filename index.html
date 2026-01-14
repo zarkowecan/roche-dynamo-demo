@@ -40,7 +40,6 @@
         }
 
         h1, h2, h3, h4 { margin: 0; color: var(--text-main); }
-        /* Smanjen donji prored za paragrafe */
         p { line-height: 1.6; color: var(--text-secondary); margin-bottom: 15px; }
         
         .container {
@@ -69,7 +68,6 @@
             text-align: center;
             color: white;
             overflow: hidden;
-            /* Smanjen prored ispod hero sekcije */
             margin-bottom: 40px;
         }
 
@@ -127,20 +125,19 @@
             background-color: #004c8c;
         }
 
-        /* --- 2. KANALI (AŽURIRANO ZA NOVE IKONICE) --- */
-        /* Smanjen padding sekcije */
+        /* --- 2. KANALI --- */
         .channels-section { padding: 40px 0; }
         
         .channels-wrapper {
             display: flex;
             justify-content: center;
-            gap: 20px; /* Smanjen razmak između kartica */
+            gap: 20px;
             flex-wrap: wrap;
         }
 
         .channel-card {
             background: white;
-            padding: 15px 25px; /* Malo kompaktniji padding */
+            padding: 15px 25px;
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -152,16 +149,14 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             border: 1px solid #f0f0f0;
             transition: var(--transition);
-            min-width: 160px; /* Malo uže */
+            min-width: 160px;
             justify-content: center;
         }
         
-        /* Stil za nove ikonice (slike) umesto SVG putanja */
         .channel-card img { 
             width: 28px; 
             height: 28px; 
             transition: var(--transition);
-            /* Opciono: ako su ikonice crne, ovo ih boji u sivo pa u plavo na hover */
             filter: grayscale(100%) opacity(0.7); 
         }
         
@@ -170,15 +165,12 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.1); 
             border-color: var(--roche-blue);
         }
-        /* Na hover, vrati originalnu boju ikonice (ili je oboji u plavo ako je transparentna) */
         .channel-card:hover img { 
-            filter: none; /* Vraća originalne boje */
-            /* Ako želiš da budu baš Roche plave, koristi filter generator za tu boju */
+            filter: none; 
         }
         .channel-card:hover span { color: var(--roche-blue); }
 
         /* --- 2.5 INTRO TEXT --- */
-        /* Smanjen padding */
         .intro-text-section { padding: 50px 0; text-align: center; }
         .intro-content { max-width: 900px; margin: 0 auto; }
         
@@ -186,16 +178,14 @@
             font-size: 1.3rem;
             color: #222;
             line-height: 1.6; 
-            margin-bottom: 20px; /* Smanjen prored */
+            margin-bottom: 20px;
             font-weight: normal;
             font-style: normal;
         }
 
         /* --- 3. EPIZODE --- */
-        /* Smanjeni padding-zi */
         .episodes-section { padding: 50px 0 80px; }
         
-        /* Smanjen prored ispod naslova */
         .section-header { margin-bottom: 30px; }
         .section-header h2 { font-size: 2.5rem; color: var(--text-main); margin-bottom: 10px; }
 
@@ -208,12 +198,10 @@
             position: relative;
             padding-bottom: 56.25%; 
             height: 0;
-            /* Smanjen prored do slajdera */
             margin-bottom: 50px;
         }
         .featured-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
-        /* Slider naslov prored */
         h3.slider-title { font-size: 1.8rem; margin-bottom: 25px; color: var(--text-main); }
 
         /* Slider */
@@ -259,15 +247,13 @@
         .prev-btn { margin-right: 15px; }
         .next-btn { margin-left: 15px; }
 
-        /* --- 4. TEME (AŽURIRANO ZA GIFOVE I TEKST) --- */
-        /* Smanjeni padding-zi */
+        /* --- 4. TEME --- */
         .topics-section { padding: 60px 0 100px; }
-        /* Smanjen margin-top za grid */
         .topics-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; margin-top: 40px;
         }
         .topic-card {
-            padding: 30px 20px; /* Malo manji padding unutar kartice */
+            padding: 30px 20px; 
             text-align: center; border-radius: 20px;
             background: white; transition: var(--transition);
             border: 1px solid #f0f0f0;
@@ -279,22 +265,19 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.08); 
         }
 
-        /* Stil za GIF ikonicu */
         .topic-icon-gif { 
-            width: 100px; /* Prilagodi veličinu po potrebi */
+            width: 100px; 
             height: auto;
             margin-bottom: 20px;
             display: block;
         }
 
-        /* Povećan naslov u kartici */
         .topic-card h3 {
             font-size: 1.5rem;
             margin-bottom: 15px;
             color: var(--roche-blue);
         }
 
-        /* Stil za opis teme */
         .topic-card p {
             font-size: 1rem;
             color: var(--text-secondary);
@@ -437,25 +420,25 @@
             <div class="topics-grid">
                 
                 <div class="topic-card">
-                    <img src="inovacije.gif" alt="Inovacije" class="topic-icon-gif">
+                    <img src="Atom animated.gif" alt="Inovacije" class="topic-icon-gif">
                     <h3>Inovacije</h3>
                     <p>Najnovija otkrića koja redefinišu granice moderne medicine i lečenja.</p>
                 </div>
                 
                 <div class="topic-card">
-                    <img src="pacijenti.gif" alt="Pacijenti" class="topic-icon-gif">
+                    <img src="Pulsating heart animated.gif" alt="Pacijenti" class="topic-icon-gif">
                     <h3>Pacijenti</h3>
                     <p>Fokus na iskustva, potrebe i bolje ishode lečenja za svakog pojedinca.</p>
                 </div>
                 
                 <div class="topic-card">
-                    <img src="tehnologija.gif" alt="Tehnologija" class="topic-icon-gif">
+                    <img src="Vital signs animated.gif" alt="Tehnologija" class="topic-icon-gif">
                     <h3>Tehnologija</h3>
                     <p>Digitalni alati, AI i podaci koji transformišu zdravstveni ekosistem.</p>
                 </div>
                 
                 <div class="topic-card">
-                    <img src="ljudi.gif" alt="Ljudi" class="topic-icon-gif">
+                    <img src="Family animated.gif" alt="Ljudi" class="topic-icon-gif">
                     <h3>Ljudi</h3>
                     <p>Priče stručnjaka, lidera i timova koji stoje iza pozitivnih promena.</p>
                 </div>
