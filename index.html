@@ -23,10 +23,10 @@
         /* --- 0. OSNOVNA PODEŠAVANJA --- */
         :root {
             --bg-color: #ffffff;
-            --text-main: #0F0F0F; /* YouTube Black */
-            --text-secondary: #606060; /* YouTube Grey */
+            --text-main: #0F0F0F;
+            --text-secondary: #606060;
             --roche-blue: #005ead;
-            --transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         body {
@@ -58,7 +58,7 @@
             margin: 0;
         }
 
-        /* --- 1. HERO SEKCIJA (BEZ CTA) --- */
+        /* --- 1. HERO SEKCIJA --- */
         .hero {
             position: relative;
             height: 85vh;
@@ -108,99 +108,131 @@
             margin-bottom: 0; 
         }
 
-        /* --- 2. KANALI --- */
-        .channels-section { padding: 30px 0; border-bottom: 1px solid #e5e5e5; }
-        .channels-wrapper { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        .channel-card {
-            background: #f2f2f2; padding: 10px 20px; border-radius: 20px;
-            display: flex; align-items: center; gap: 10px;
-            font-weight: 500; font-size: 0.95rem; transition: var(--transition); border: 1px solid transparent;
-        }
-        .channel-card img { width: 24px; height: 24px; }
-        .channel-card:hover { background: #e5e5e5; border-color: #ccc; }
-
-        /* --- 3. INTRO TEXT --- */
-        .intro-text-section { padding: 60px 0; text-align: center; }
-        .intro-content { max-width: 900px; margin: 0 auto; }
-        .intro-text-paragraph { 
-            font-size: 1.2rem; color: var(--text-main); line-height: 1.6; margin-bottom: 20px;
-        }
-
-        /* --- 4. YOUTUBE GRID (PRAVI SADRŽAJ) --- */
-        .youtube-section { padding: 40px 0 80px; }
-        .section-title { 
-            font-size: 1.5rem; font-weight: bold; margin-bottom: 30px; 
-            display: flex; align-items: center; gap: 10px;
-        }
+        /* --- 2. KANALI (VRAĆENO NA KRUPNIJE) --- */
+        .channels-section { padding: 40px 0; border-bottom: 1px solid #e5e5e5; }
+        .channels-wrapper { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
         
-        /* FEATURED VIDEO */
+        .channel-card {
+            background: #f8f8f8; 
+            padding: 15px 30px; /* Povećan padding */
+            border-radius: 50px;
+            display: flex; align-items: center; gap: 15px;
+            font-weight: bold; 
+            font-size: 1.15rem; /* Povećan font */
+            transition: var(--transition); 
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .channel-card img { width: 32px; height: 32px; /* Povećane ikonice */ }
+        .channel-card:hover { 
+            background: white; 
+            border-color: var(--roche-blue); 
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        /* --- 3. INTRO TEXT (POVEĆAN) --- */
+        .intro-text-section { padding: 80px 0; text-align: center; }
+        .intro-content { max-width: 1000px; margin: 0 auto; }
+        .intro-text-paragraph { 
+            font-size: 1.35rem; /* Veći font */
+            color: #222; 
+            line-height: 1.6; 
+            margin-bottom: 25px;
+        }
+
+        /* --- 4. VIDEO SEKCIJE (RAZDVOJENE) --- */
+        .video-section-header {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--text-main);
+            margin-bottom: 30px;
+            padding-left: 10px;
+            border-left: 5px solid var(--roche-blue);
+            line-height: 1.2;
+        }
+
+        /* NAJNOVIJA EPIZODA */
+        .latest-episode-section { padding: 40px 0 60px; }
+        
         .featured-live-wrapper {
-            margin-bottom: 50px;
-            display: grid; grid-template-columns: 2fr 1fr; gap: 24px;
+            display: grid; grid-template-columns: 2fr 1fr; gap: 40px;
         }
         .featured-thumbnail-container {
             position: relative; width: 100%; padding-bottom: 56.25%;
-            background: #000; border-radius: 12px; overflow: hidden;
+            background: #000; border-radius: 16px; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         .featured-thumbnail-container iframe {
             position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover;
         }
         .featured-info { display: flex; flex-direction: column; justify-content: center; }
-        .featured-info h3 { font-size: 1.8rem; line-height: 1.3; margin-bottom: 10px; }
-        .featured-meta { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 15px; }
-        .featured-desc { font-size: 1rem; color: var(--text-main); line-height: 1.5; }
+        .featured-info h3 { font-size: 2rem; line-height: 1.3; margin-bottom: 15px; color: var(--roche-blue); }
+        .featured-meta { font-size: 1rem; color: var(--text-secondary); margin-bottom: 20px; font-weight: 500; }
+        .featured-desc { font-size: 1.1rem; color: var(--text-main); line-height: 1.6; }
 
-        /* GRID */
+        /* STARE EPIZODE */
+        .archive-section { padding: 40px 0 100px; background-color: #fafafa; border-top: 1px solid #eee; }
+        
         .yt-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px 16px;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px 20px;
         }
-        .yt-card { cursor: pointer; display: flex; flex-direction: column; gap: 12px; }
+        .yt-card { 
+            cursor: pointer; display: flex; flex-direction: column; gap: 15px; 
+            transition: transform 0.2s;
+        }
+        .yt-card:hover { transform: translateY(-5px); }
+
         .yt-thumb-wrapper {
             position: relative; width: 100%; padding-bottom: 56.25%;
             border-radius: 12px; overflow: hidden; background: #ccc;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         .yt-thumb-wrapper img {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
-            transition: transform 0.3s;
         }
-        .yt-card:hover .yt-thumb-wrapper img { transform: scale(1.05); }
         .yt-duration {
             position: absolute; bottom: 8px; right: 8px;
-            background: rgba(0,0,0,0.8); color: white; padding: 3px 5px;
-            font-size: 0.75rem; font-weight: 500; border-radius: 4px;
+            background: rgba(0,0,0,0.8); color: white; padding: 4px 6px;
+            font-size: 0.8rem; font-weight: 500; border-radius: 4px;
         }
-        .yt-details { display: flex; gap: 12px; align-items: flex-start; }
+        
+        .yt-details { display: flex; gap: 15px; align-items: flex-start; }
         .yt-avatar {
-            width: 36px; height: 36px; border-radius: 50%; background: #eee; flex-shrink: 0; overflow: hidden;
+            width: 40px; height: 40px; border-radius: 50%; background: #eee; flex-shrink: 0; overflow: hidden;
         }
         .yt-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        
         .yt-text { display: flex; flex-direction: column; }
         .yt-title {
-            font-size: 1rem; font-weight: 600; color: var(--text-main); margin-bottom: 6px;
+            font-size: 1.1rem; font-weight: 600; color: var(--text-main); margin-bottom: 5px;
             line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
         }
-        .yt-meta-row { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.3; }
-        .yt-stats { font-size: 0.85rem; color: var(--text-secondary); margin-top: 2px; }
+        .yt-meta-row { font-size: 0.9rem; color: var(--text-secondary); }
+        .yt-stats { font-size: 0.9rem; color: var(--text-secondary); }
 
         /* --- 5. TEME --- */
-        .topics-section { padding: 40px 0 100px; background: #f9f9f9; border-top: 1px solid #e5e5e5; }
+        .topics-section { padding: 80px 0 100px; background: #fff; border-top: 1px solid #e5e5e5; }
         .topics-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; margin-top: 40px;
         }
         .topic-card {
-            padding: 25px 15px; text-align: center; border-radius: 12px;
+            padding: 30px 20px; text-align: center; border-radius: 16px;
             background: white; transition: var(--transition);
-            border: 1px solid #e5e5e5; display: flex; flex-direction: column; align-items: center;
+            border: 1px solid #eee; display: flex; flex-direction: column; align-items: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
         }
-        .topic-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .topic-icon-gif { width: 80px; height: auto; margin-bottom: 15px; display: block; }
-        .topic-card h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--roche-blue); }
-        .topic-card p { font-size: 0.9rem; color: var(--text-secondary); margin: 0; }
+        .topic-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
+        .topic-icon-gif { width: 90px; height: auto; margin-bottom: 20px; display: block; }
+        .topic-card h3 { font-size: 1.4rem; margin-bottom: 10px; color: var(--roche-blue); }
+        .topic-card p { font-size: 1rem; color: var(--text-secondary); margin: 0; }
 
         @media (max-width: 900px) {
-            .featured-live-wrapper { grid-template-columns: 1fr; gap: 15px; }
+            .featured-live-wrapper { grid-template-columns: 1fr; gap: 20px; }
             .hero-logo { max-width: 400px; }
             .hero { height: 70vh; }
+            .channels-wrapper { gap: 15px; }
+            .channel-card { padding: 10px 20px; font-size: 1rem; }
         }
     </style>
 </head>
@@ -249,10 +281,8 @@
         </div>
     </section>
 
-    <section class="youtube-section container">
-        <h2 class="section-title">
-            <img src="Video.svg" style="width:30px; opacity:0.8;"> Najnovije Epizode
-        </h2>
+    <section class="latest-episode-section container">
+        <h2 class="video-section-header">Najnovija Epizoda</h2>
 
         <div class="featured-live-wrapper">
             <div class="featured-thumbnail-container">
@@ -260,112 +290,118 @@
             </div>
             <div class="featured-info">
                 <h3>Problem skrininga u dijagnostici / Prof. Lazar Popović</h3>
-                <div class="featured-meta">Dynamo Roche Srbija • 223 pregleda • pre 400 dana</div>
+                <div class="featured-meta">Dynamo Roche Srbija • 223 pregleda • pre 1 godinu</div>
                 <p class="featured-desc">
                     U ovoj epizodi razgovaramo sa Prof. Lazarom Popovićem o izazovima i problemima skrininga u savremenoj dijagnostici. Saznajte zašto je rana detekcija ključna i koje su prepreke u sistemu.
                 </p>
             </div>
         </div>
+    </section>
 
-        <div class="yt-grid">
-            
-            <a href="https://www.youtube.com/watch?v=dppxVmlTxzQ" target="_blank" class="yt-card">
-                <div class="yt-thumb-wrapper">
-                    <img src="https://img.youtube.com/vi/dppxVmlTxzQ/mqdefault.jpg" alt="Vladimir Kovač">
-                    <div class="yt-duration">56:30</div>
-                </div>
-                <div class="yt-details">
-                    <div class="yt-avatar"><img src="logo.png" alt="Avatar"></div>
-                    <div class="yt-text">
-                        <div class="yt-title">Marketing danas / Vladimir Kovač - Dynamo</div>
-                        <div class="yt-meta-row">Dynamo Roche Srbija</div>
-                        <div class="yt-stats">2 godine • Brend i Marketing</div>
+    <section class="archive-section">
+        <div class="container">
+            <h2 class="video-section-header">Stare Epizode</h2>
+
+            <div class="yt-grid">
+                
+                <a href="https://www.youtube.com/watch?v=dppxVmlTxzQ" target="_blank" class="yt-card">
+                    <div class="yt-thumb-wrapper">
+                        <img src="https://img.youtube.com/vi/dppxVmlTxzQ/mqdefault.jpg" alt="Vladimir Kovač">
+                        <div class="yt-duration">56:30</div>
                     </div>
-                </div>
-            </a>
-
-            <a href="https://www.youtube.com/watch?v=Lh3gDOgLupU" target="_blank" class="yt-card">
-                <div class="yt-thumb-wrapper">
-                    <img src="https://img.youtube.com/vi/Lh3gDOgLupU/mqdefault.jpg" alt="Petar Vasić">
-                    <div class="yt-duration">1:23:35</div>
-                </div>
-                <div class="yt-details">
-                    <div class="yt-avatar"><img src="logo.png" alt="Avatar"></div>
-                    <div class="yt-text">
-                        <div class="yt-title">(Ne)ograničene mogućnosti AI-a / Petar Vasić</div>
-                        <div class="yt-meta-row">Dynamo Roche Srbija</div>
-                        <div class="yt-stats">12K pregleda • Veštačka inteligencija</div>
+                    <div class="yt-details">
+                        <div class="yt-avatar"><img src="logo.png" alt="Avatar"></div>
+                        <div class="yt-text">
+                            <div class="yt-title">Marketing danas / Vladimir Kovač - Dynamo</div>
+                            <div class="yt-meta-row">Dynamo Roche Srbija</div>
+                            <div class="yt-stats">2 godine • Brend i Marketing</div>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
 
-            <a href="https://www.youtube.com/watch?v=5r6gG2IqOu0" target="_blank" class="yt-card">
-                <div class="yt-thumb-wrapper">
-                    <img src="https://img.youtube.com/vi/5r6gG2IqOu0/mqdefault.jpg" alt="Marko Lukić">
-                    <div class="yt-duration">38:10</div>
-                </div>
-                <div class="yt-details">
-                    <div class="yt-avatar"><img src="logo.png" alt="Avatar"></div>
-                    <div class="yt-text">
-                        <div class="yt-title">Teleoftalmologija: lečenje na daljinu / dr Marko Lukić</div>
-                        <div class="yt-meta-row">Dynamo Roche Srbija</div>
-                        <div class="yt-stats">2 godine • Medicina na daljinu</div>
+                <a href="https://www.youtube.com/watch?v=Lh3gDOgLupU" target="_blank" class="yt-card">
+                    <div class="yt-thumb-wrapper">
+                        <img src="https://img.youtube.com/vi/Lh3gDOgLupU/mqdefault.jpg" alt="Petar Vasić">
+                        <div class="yt-duration">1:23:35</div>
                     </div>
-                </div>
-            </a>
-
-            <a href="https://www.youtube.com/watch?v=qjY6XPYArA0" target="_blank" class="yt-card">
-                <div class="yt-thumb-wrapper">
-                    <img src="https://img.youtube.com/vi/qjY6XPYArA0/mqdefault.jpg" alt="Milan Jevtić">
-                    <div class="yt-duration">45:12</div>
-                </div>
-                <div class="yt-details">
-                    <div class="yt-avatar"><img src="logo.png" alt="Avatar"></div>
-                    <div class="yt-text">
-                        <div class="yt-title">Da li je AI budućnost medicine? / Milan Jevtić</div>
-                        <div class="yt-meta-row">Dynamo Roche Srbija</div>
-                        <div class="yt-stats">3 godine • eHealth Konsultacije</div>
+                    <div class="yt-details">
+                        <div class="yt-avatar"><img src="logo.png" alt="Avatar"></div>
+                        <div class="yt-text">
+                            <div class="yt-title">(Ne)ograničene mogućnosti AI-a / Petar Vasić</div>
+                            <div class="yt-meta-row">Dynamo Roche Srbija</div>
+                            <div class="yt-stats">12K pregleda • Veštačka inteligencija</div>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
 
-            <a href="https://www.youtube.com/watch?v=0YnwZ_m9xVU" target="_blank" class="yt-card">
-                <div class="yt-thumb-wrapper">
-                    <img src="https://img.youtube.com/vi/0YnwZ_m9xVU/mqdefault.jpg" alt="Andrija Zvicer">
-                    <div class="yt-duration">50:20</div>
-                </div>
-                <div class="yt-details">
-                    <div class="yt-avatar"><img src="logo.png" alt="Avatar"></div>
-                    <div class="yt-text">
-                        <div class="yt-title">Kako Agile transformiše kompanije? / Andrija Zvicer</div>
-                        <div class="yt-meta-row">Dynamo Roche Srbija</div>
-                        <div class="yt-stats">3 godine • Agile & Business</div>
+                <a href="https://www.youtube.com/watch?v=5r6gG2IqOu0" target="_blank" class="yt-card">
+                    <div class="yt-thumb-wrapper">
+                        <img src="https://img.youtube.com/vi/5r6gG2IqOu0/mqdefault.jpg" alt="Marko Lukić">
+                        <div class="yt-duration">38:10</div>
                     </div>
-                </div>
-            </a>
-
-            <a href="https://www.youtube.com/watch?v=iHveYjQLlU8" target="_blank" class="yt-card">
-                <div class="yt-thumb-wrapper">
-                    <img src="https://img.youtube.com/vi/iHveYjQLlU8/mqdefault.jpg" alt="Goran Jankuloski">
-                    <div class="yt-duration">1:02:15</div>
-                </div>
-                <div class="yt-details">
-                    <div class="yt-avatar"><img src="logo.png" alt="Avatar"></div>
-                    <div class="yt-text">
-                        <div class="yt-title">PODKASTI kao medij: koga briga za 1% tržišta?</div>
-                        <div class="yt-meta-row">Dynamo Roche Srbija</div>
-                        <div class="yt-stats">1.3K pregleda • Digitalni mediji</div>
+                    <div class="yt-details">
+                        <div class="yt-avatar"><img src="logo.png" alt="Avatar"></div>
+                        <div class="yt-text">
+                            <div class="yt-title">Teleoftalmologija: lečenje na daljinu / dr Marko Lukić</div>
+                            <div class="yt-meta-row">Dynamo Roche Srbija</div>
+                            <div class="yt-stats">2 godine • Medicina na daljinu</div>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
 
+                <a href="https://www.youtube.com/watch?v=qjY6XPYArA0" target="_blank" class="yt-card">
+                    <div class="yt-thumb-wrapper">
+                        <img src="https://img.youtube.com/vi/qjY6XPYArA0/mqdefault.jpg" alt="Milan Jevtić">
+                        <div class="yt-duration">45:12</div>
+                    </div>
+                    <div class="yt-details">
+                        <div class="yt-avatar"><img src="logo.png" alt="Avatar"></div>
+                        <div class="yt-text">
+                            <div class="yt-title">Da li je AI budućnost medicine? / Milan Jevtić</div>
+                            <div class="yt-meta-row">Dynamo Roche Srbija</div>
+                            <div class="yt-stats">3 godine • eHealth Konsultacije</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=0YnwZ_m9xVU" target="_blank" class="yt-card">
+                    <div class="yt-thumb-wrapper">
+                        <img src="https://img.youtube.com/vi/0YnwZ_m9xVU/mqdefault.jpg" alt="Andrija Zvicer">
+                        <div class="yt-duration">50:20</div>
+                    </div>
+                    <div class="yt-details">
+                        <div class="yt-avatar"><img src="logo.png" alt="Avatar"></div>
+                        <div class="yt-text">
+                            <div class="yt-title">Kako Agile transformiše kompanije? / Andrija Zvicer</div>
+                            <div class="yt-meta-row">Dynamo Roche Srbija</div>
+                            <div class="yt-stats">3 godine • Agile & Business</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=iHveYjQLlU8" target="_blank" class="yt-card">
+                    <div class="yt-thumb-wrapper">
+                        <img src="https://img.youtube.com/vi/iHveYjQLlU8/mqdefault.jpg" alt="Goran Jankuloski">
+                        <div class="yt-duration">1:02:15</div>
+                    </div>
+                    <div class="yt-details">
+                        <div class="yt-avatar"><img src="logo.png" alt="Avatar"></div>
+                        <div class="yt-text">
+                            <div class="yt-title">PODKASTI kao medij: koga briga za 1% tržišta?</div>
+                            <div class="yt-meta-row">Dynamo Roche Srbija</div>
+                            <div class="yt-stats">1.3K pregleda • Digitalni mediji</div>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
         </div>
     </section>
 
 
     <section class="topics-section">
         <div class="container">
-            <h2 style="text-align: center; color: var(--text-main);">Teme</h2>
+            <h2 style="text-align: center; font-size: 2.2rem; color: var(--text-main); margin-bottom: 30px;">Teme</h2>
             <div class="topics-grid">
                 
                 <div class="topic-card">
@@ -398,12 +434,8 @@
 
     <footer>
         <div class="container" style="text-align: center; padding: 40px 0;">
-            <div class="footer-links" style="margin-bottom: 20px;">
-                <a href="#" style="margin: 0 10px; color: var(--roche-blue); font-weight: bold;">O nama</a>
-                <a href="#" style="margin: 0 10px; color: var(--roche-blue); font-weight: bold;">Kontakt</a>
-            </div>
             
-            <p style="margin: 20px auto; max-width: 800px; font-size: 0.8rem; color: #999;">
+            <p style="margin: 20px auto; max-width: 800px; font-size: 0.8rem; color: #999; line-height: 1.5;">
                 <strong>Napomena za stručnu javnost:</strong><br>
                 Materijal je kreiran isključivo za potrebe ove prezentacije i medicinske edukacije zdravstvenih radnika. Molimo vas da poštujete poverljivost podataka i ne delite sadržaj putem javnih kanala.
             </p>
